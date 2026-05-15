@@ -31,11 +31,11 @@ and testing of each story.
 
 **Purpose**: Scaffold both frontend and backend projects; verify tooling.
 
-- [ ] T001 Scaffold Angular 17 standalone project with routing and SCSS: run `ng new frontend --routing --style scss --standalone` from the repo root
-- [ ] T002 Add Angular Material 17 to frontend: run `ng add @angular/material` inside `frontend/` (choose Custom theme, enable global typography and animations)
-- [ ] T003 [P] Install Bootstrap 5.3 CSS-only in frontend: run `npm install bootstrap` inside `frontend/` then add `"node_modules/bootstrap/dist/css/bootstrap.min.css"` to `styles` array in `frontend/angular.json`
-- [ ] T004 [P] Initialise Express TypeScript backend: create `backend/` directory, run `npm init -y` inside it, create `backend/tsconfig.json` with `strict: true` and `outDir: dist`, create `backend/nodemon.json` pointing to `src/index.ts`
-- [ ] T005 Install backend npm dependencies inside `backend/`: run `npm install express better-sqlite3 cors` and `npm install --save-dev typescript @types/node @types/express @types/better-sqlite3 ts-node nodemon`
+- [X] T001 Scaffold Angular 17 standalone project with routing and SCSS: run `ng new frontend --routing --style scss --standalone` from the repo root
+- [X] T002 Add Angular Material 17 to frontend: run `ng add @angular/material` inside `frontend/` (choose Custom theme, enable global typography and animations)
+- [X] T003 [P] Install Bootstrap 5.3 CSS-only in frontend: run `npm install bootstrap` inside `frontend/` then add `"node_modules/bootstrap/dist/css/bootstrap.min.css"` to `styles` array in `frontend/angular.json`
+- [X] T004 [P] Initialise Express TypeScript backend: create `backend/` directory, run `npm init -y` inside it, create `backend/tsconfig.json` with `strict: true` and `outDir: dist`, create `backend/nodemon.json` pointing to `src/index.ts`
+- [X] T005 Install backend npm dependencies inside `backend/`: run `npm install express better-sqlite3 cors` and `npm install --save-dev typescript @types/node @types/express @types/better-sqlite3 ts-node nodemon`
 
 **Checkpoint**: Both `frontend/` and `backend/` directories exist with their `package.json` files; `ng serve` starts without errors; `ts-node --version` works from `backend/`.
 
@@ -47,15 +47,15 @@ and testing of each story.
 
 **CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T006 Create Angular Material custom theme file at `frontend/src/theme/custom-theme.scss` defining a light palette, dark palette, and typography config using `mat.define-theme()`
-- [ ] T007 Update `frontend/src/styles.scss` to import Bootstrap (`@import 'bootstrap/scss/bootstrap'` or link via `angular.json`) and include the Angular Material theme from `theme/custom-theme.scss`; ensure Bootstrap import comes before Material styles
-- [ ] T008 [P] Create `frontend/src/app/app.component.ts` as a standalone root shell component containing only `<app-nav></app-nav>` and `<router-outlet></router-outlet>` in its template
-- [ ] T009 Define Angular client-side routes in `frontend/src/app/app.routes.ts`: path `''` → `HomeComponent`, path `'about'` → `AboutComponent`, wildcard `'**'` → redirect to `''`
-- [ ] T010 Configure Angular providers in `frontend/src/app/app.config.ts` with `provideRouter(appRoutes)`, `provideAnimations()`, and register `ThemeService`
-- [ ] T011 Create SQLite database connection singleton in `backend/src/db/database.ts` using `better-sqlite3`; open (or create) `backend/data/site.db`; export the `Database` instance
-- [ ] T012 [P] Create initial SQL migration file at `backend/migrations/001_initial.sql` with DDL to create `schema_migrations` table and insert version row `1`
-- [ ] T013 Create migration runner at `backend/src/db/migrate.ts` that reads all `.sql` files from `backend/migrations/` in version order, checks `schema_migrations` for already-applied versions, and executes new ones using the singleton from `database.ts`
-- [ ] T014 Create Express application entry point at `backend/src/index.ts`: apply `cors({ origin: 'http://localhost:4200' })`, parse JSON body, register routes from `backend/src/routes/`, listen on port `3000`
+- [X] T006 Create Angular Material custom theme file at `frontend/src/theme/custom-theme.scss` defining a light palette, dark palette, and typography config using `mat.define-theme()`
+- [X] T007 Update `frontend/src/styles.scss` to import Bootstrap (`@import 'bootstrap/scss/bootstrap'` or link via `angular.json`) and include the Angular Material theme from `theme/custom-theme.scss`; ensure Bootstrap import comes before Material styles
+- [X] T008 [P] Create `frontend/src/app/app.component.ts` as a standalone root shell component containing only `<app-nav></app-nav>` and `<router-outlet></router-outlet>` in its template
+- [X] T009 Define Angular client-side routes in `frontend/src/app/app.routes.ts`: path `''` → `HomeComponent`, path `'about'` → `AboutComponent`, wildcard `'**'` → redirect to `''`
+- [X] T010 Configure Angular providers in `frontend/src/app/app.config.ts` with `provideRouter(appRoutes)`, `provideAnimations()`, and register `ThemeService`
+- [X] T011 Create SQLite database connection singleton in `backend/src/db/database.ts` using `better-sqlite3`; open (or create) `backend/data/site.db`; export the `Database` instance
+- [X] T012 [P] Create initial SQL migration file at `backend/migrations/001_initial.sql` with DDL to create `schema_migrations` table and insert version row `1`
+- [X] T013 Create migration runner at `backend/src/db/migrate.ts` that reads all `.sql` files from `backend/migrations/` in version order, checks `schema_migrations` for already-applied versions, and executes new ones using the singleton from `database.ts`
+- [X] T014 Create Express application entry point at `backend/src/index.ts`: apply `cors({ origin: 'http://localhost:4200' })`, parse JSON body, register routes from `backend/src/routes/`, listen on port `3000`
 
 **Checkpoint**: Run `npx ts-node src/db/migrate.ts` from `backend/` — `schema_migrations` table exists in `backend/data/site.db`. Run `ng build` from `frontend/` — zero compilation errors.
 
@@ -72,11 +72,11 @@ returns to `/`, "Home" link is highlighted. Navigate to `/xyz` — redirected to
 
 ### Implementation for User Story 1
 
-- [ ] T015 [P] [US1] Create `frontend/src/app/pages/home/home.component.ts` as a standalone Angular component with an empty template (only a wrapping `<main>` element)
-- [ ] T016 [P] [US1] Create `frontend/src/app/pages/about/about.component.ts` as a standalone Angular component with a placeholder `<h1>About</h1>` heading and Bootstrap container class
-- [ ] T017 [US1] Create `frontend/src/app/components/nav/nav.component.ts` as a standalone component using Angular Material `MatToolbarModule` and `MatButtonModule`; define `navItems` array matching the `NavigationItem` contract from `contracts/theme-api.md` with entries for Home (`/`) and About (`/about`)
-- [ ] T018 [US1] Add navigation links to NavComponent template in `frontend/src/app/components/nav/nav.component.html` using `*ngFor` over `navItems`, Angular `routerLink`, and `routerLinkActive="active-link"` directive; apply Bootstrap `d-flex` and `gap-2` classes for layout
-- [ ] T019 [US1] Import and declare `NavComponent` in `AppComponent` (`frontend/src/app/app.component.ts`) so it renders above `<router-outlet>`; update `app.routes.ts` to lazy-load `HomeComponent` and `AboutComponent`
+- [X] T015 [P] [US1] Create `frontend/src/app/pages/home/home.component.ts` as a standalone Angular component with an empty template (only a wrapping `<main>` element)
+- [X] T016 [P] [US1] Create `frontend/src/app/pages/about/about.component.ts` as a standalone Angular component with a placeholder `<h1>About</h1>` heading and Bootstrap container class
+- [X] T017 [US1] Create `frontend/src/app/components/nav/nav.component.ts` as a standalone component using Angular Material `MatToolbarModule` and `MatButtonModule`; define `navItems` array matching the `NavigationItem` contract from `contracts/theme-api.md` with entries for Home (`/`) and About (`/about`)
+- [X] T018 [US1] Add navigation links to NavComponent template in `frontend/src/app/components/nav/nav.component.html` using `*ngFor` over `navItems`, Angular `routerLink`, and `routerLinkActive="active-link"` directive; apply Bootstrap `d-flex` and `gap-2` classes for layout
+- [X] T019 [US1] Import and declare `NavComponent` in `AppComponent` (`frontend/src/app/app.component.ts`) so it renders above `<router-outlet>`; update `app.routes.ts` to lazy-load `HomeComponent` and `AboutComponent`
 
 **Checkpoint**: `ng serve` — navigation menu with two links visible; clicking each link loads the correct component; unknown route redirects to Home; active link has a distinct style.
 
@@ -92,8 +92,8 @@ images, or child elements visible to the user.
 
 ### Implementation for User Story 2
 
-- [ ] T020 [US2] Update `frontend/src/app/pages/home/home.component.html` to contain exactly one element: `<main class="container-fluid p-4"></main>` with no children; remove any default Angular generated placeholder content
-- [ ] T021 [US2] Add SCSS rule in `frontend/src/app/pages/home/home.component.scss` to set `min-height: 80vh` on the `<main>` element so the blank page has deliberate visual weight without adding content
+- [X] T020 [US2] Update `frontend/src/app/pages/home/home.component.html` to contain exactly one element: `<main class="container-fluid p-4"></main>` with no children; remove any default Angular generated placeholder content
+- [X] T021 [US2] Add SCSS rule in `frontend/src/app/pages/home/home.component.scss` to set `min-height: 80vh` on the `<main>` element so the blank page has deliberate visual weight without adding content
 
 **Checkpoint**: Open `http://localhost:4200`. Page body is visually empty below the navigation bar. DevTools Elements panel shows `<main>` with no child nodes.
 
@@ -110,11 +110,11 @@ Refresh browser — theme restores from `sessionStorage`.
 
 ### Implementation for User Story 3
 
-- [ ] T022 [US3] Create `frontend/src/app/services/theme.service.ts` implementing the `ThemeService` contract from `contracts/theme-api.md`: expose `theme$` as a `BehaviorSubject<'light'|'dark'>`, implement `toggle()` to flip state and write to `sessionStorage['theme']`, implement `load()` to read from `sessionStorage` and emit (default `'light'`)
-- [ ] T023 [US3] Extend the Angular Material theme in `frontend/src/theme/custom-theme.scss` to include a `.mat-dark-theme` class block using `@include mat.all-component-colors(dark-theme)` so dark Material styles activate via a CSS class on `<body>`
-- [ ] T024 [US3] Inject `ThemeService` into `AppComponent` (`frontend/src/app/app.component.ts`) and subscribe to `theme$`; apply class `mat-dark-theme` to `document.body` when theme is `'dark'`, remove it when `'light'`; call `ThemeService.load()` in `ngOnInit`
-- [ ] T025 [P] [US3] Add a dark mode toggle control to `NavComponent` (`frontend/src/app/components/nav/nav.component.ts`): inject `ThemeService`, add a `MatSlideToggleModule` or `MatIconButton` bound to `theme$ | async`; clicking it calls `themeService.toggle()`
-- [ ] T026 [US3] Add a global CSS rule in `frontend/src/styles.scss` for `body.mat-dark-theme` to set Bootstrap-compatible background and text colours (e.g., `background-color: #121212; color: #e0e0e0;`) so Bootstrap layout areas also reflect the dark theme
+- [X] T022 [US3] Create `frontend/src/app/services/theme.service.ts` implementing the `ThemeService` contract from `contracts/theme-api.md`: expose `theme$` as a `BehaviorSubject<'light'|'dark'>`, implement `toggle()` to flip state and write to `sessionStorage['theme']`, implement `load()` to read from `sessionStorage` and emit (default `'light'`)
+- [X] T023 [US3] Extend the Angular Material theme in `frontend/src/theme/custom-theme.scss` to include a `.mat-dark-theme` class block using `@include mat.all-component-colors(dark-theme)` so dark Material styles activate via a CSS class on `<body>`
+- [X] T024 [US3] Inject `ThemeService` into `AppComponent` (`frontend/src/app/app.component.ts`) and subscribe to `theme$`; apply class `mat-dark-theme` to `document.body` when theme is `'dark'`, remove it when `'light'`; call `ThemeService.load()` in `ngOnInit`
+- [X] T025 [P] [US3] Add a dark mode toggle control to `NavComponent` (`frontend/src/app/components/nav/nav.component.ts`): inject `ThemeService`, add a `MatSlideToggleModule` or `MatIconButton` bound to `theme$ | async`; clicking it calls `themeService.toggle()`
+- [X] T026 [US3] Add a global CSS rule in `frontend/src/styles.scss` for `body.mat-dark-theme` to set Bootstrap-compatible background and text colours (e.g., `background-color: #121212; color: #e0e0e0;`) so Bootstrap layout areas also reflect the dark theme
 
 **Checkpoint**: Toggle in nav bar visible. Clicking it switches site to dark mode. Navigate between pages — dark mode persists. Refresh — dark mode restored. Toggle again — light mode restored.
 
@@ -124,8 +124,8 @@ Refresh browser — theme restores from `sessionStorage`.
 
 **Purpose**: Expose and verify the backend health endpoint defined in `contracts/backend-api.md`.
 
-- [ ] T027 [P] Create GET `/api/health` route handler in `backend/src/routes/health.ts`: query `schema_migrations` table via the DB singleton; respond with `{ status: 'ok', db: 'connected', timestamp: new Date().toISOString() }`; respond `500` with `{ status: 'error', message: 'Database unavailable' }` on failure
-- [ ] T028 Register the health router in `backend/src/index.ts` under the `/api` prefix: `app.use('/api', healthRouter)`
+- [X] T027 [P] Create GET `/api/health` route handler in `backend/src/routes/health.ts`: query `schema_migrations` table via the DB singleton; respond with `{ status: 'ok', db: 'connected', timestamp: new Date().toISOString() }`; respond `500` with `{ status: 'error', message: 'Database unavailable' }` on failure
+- [X] T028 Register the health router in `backend/src/index.ts` under the `/api` prefix: `app.use('/api', healthRouter)`
 
 **Checkpoint**: Run backend with `npx ts-node src/index.ts` from `backend/`. GET `http://localhost:3000/api/health` returns `{ "status": "ok", "db": "connected", ... }`.
 
@@ -135,7 +135,7 @@ Refresh browser — theme restores from `sessionStorage`.
 
 **Purpose**: Dev experience, scripts, and final validation.
 
-- [ ] T029 [P] Add npm run scripts to `backend/package.json`: `"dev": "nodemon"`, `"build": "tsc"`, `"migrate": "ts-node src/db/migrate.ts"`; add scripts to `frontend/package.json` if not already present: `"start": "ng serve"`, `"build": "ng build"`
+- [X] T029 [P] Add npm run scripts to `backend/package.json`: `"dev": "nodemon"`, `"build": "tsc"`, `"migrate": "ts-node src/db/migrate.ts"`; add scripts to `frontend/package.json` if not already present: `"start": "ng serve"`, `"build": "ng build"`
 - [ ] T030 Run the full quickstart validation from `quickstart.md` step 7: start both servers, open `http://localhost:4200`, and verify all 7 acceptance checks pass (menu visible, About navigates, Home is blank, dark mode toggles, dark mode persists across routes, dark mode restores on refresh, unknown route redirects to Home)
 
 **Checkpoint**: All 7 quickstart validation steps pass.
