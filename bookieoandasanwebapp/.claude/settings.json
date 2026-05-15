@@ -4,7 +4,9 @@
       "Bash(ng version *)",
       "Bash(npm --version)",
       "Bash(ng new *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(npx ts-node *)",
+      "Bash(ng serve *)"
     ]
   }
 }
