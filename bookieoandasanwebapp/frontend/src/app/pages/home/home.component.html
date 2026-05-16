@@ -1,0 +1,165 @@
+<main class="resume-page container py-4">
+
+  <!-- Header -->
+  <mat-card class="mb-4 header-card">
+    <mat-card-content>
+      <div class="row align-items-center">
+        <div class="col-12 col-md-8">
+          <h1 class="resume-name mb-1">{{ name }}</h1>
+        </div>
+        <div class="col-12 col-md-4 contact-block mt-2 mt-md-0">
+          <div class="contact-item">
+            <mat-icon>location_on</mat-icon>
+            <span>{{ location }}</span>
+          </div>
+          <div class="contact-item">
+            <mat-icon>phone</mat-icon>
+            <a [href]="'tel:' + phone">{{ phone }}</a>
+          </div>
+          <div class="contact-item">
+            <mat-icon>email</mat-icon>
+            <a [href]="'mailto:' + email">{{ email }}</a>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="row g-4">
+
+    <!-- Left column -->
+    <div class="col-12 col-lg-4 d-flex flex-column gap-4">
+
+      <!-- Profile -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon class="section-icon">person</mat-icon> Profile
+          </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="pt-3">
+          <p class="profile-text">{{ profile }}</p>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Core Competencies -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon class="section-icon">star</mat-icon> Core Competencies
+          </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="pt-3">
+          <mat-chip-set>
+            @for (c of competencies; track c) {
+              <mat-chip>{{ c }}</mat-chip>
+            }
+          </mat-chip-set>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Areas of Expertise -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon class="section-icon">lightbulb</mat-icon> Areas of Expertise
+          </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="pt-3">
+          <mat-chip-set>
+            @for (e of expertise; track e) {
+              <mat-chip highlighted>{{ e }}</mat-chip>
+            }
+          </mat-chip-set>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Education -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon class="section-icon">school</mat-icon> Education
+          </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="pt-3">
+          @for (edu of education; track edu.school) {
+            <div class="edu-entry mb-3">
+              <div class="edu-school">{{ edu.school }}</div>
+              <div class="edu-degree">{{ edu.degree }}</div>
+              <div class="edu-period">{{ edu.period }}</div>
+            </div>
+          }
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Training & Hobbies -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon class="section-icon">workspace_premium</mat-icon> Training
+          </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="pt-3">
+          <p>{{ training }}</p>
+          <p class="mb-0"><strong>Hobbies:</strong> {{ hobbies }}</p>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+
+    <!-- Right column — Experience -->
+    <div class="col-12 col-lg-8">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon class="section-icon">work</mat-icon> Professional Experience
+          </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="pt-3">
+
+          @for (exp of experiences; track exp.period; let last = $last) {
+            <div class="exp-entry">
+              <div class="exp-header row">
+                <div class="col-12 col-sm-8">
+                  <div class="exp-company">{{ exp.company }}</div>
+                  @if (exp.location) {
+                    <div class="exp-location">
+                      <mat-icon class="inline-icon">place</mat-icon>{{ exp.location }}
+                    </div>
+                  }
+                  <div class="exp-title">{{ exp.title }}</div>
+                </div>
+                <div class="col-12 col-sm-4 text-sm-end">
+                  <span class="exp-period">{{ exp.period }}</span>
+                </div>
+              </div>
+
+              @for (group of exp.groups; track $index) {
+                @if (group.heading) {
+                  <div class="group-heading">{{ group.heading }}</div>
+                }
+                <ul class="bullet-list">
+                  @for (bullet of group.bullets; track $index) {
+                    <li>{{ bullet }}</li>
+                  }
+                </ul>
+              }
+
+              @if (!last) {
+                <mat-divider class="my-3"></mat-divider>
+              }
+            </div>
+          }
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+</main>
