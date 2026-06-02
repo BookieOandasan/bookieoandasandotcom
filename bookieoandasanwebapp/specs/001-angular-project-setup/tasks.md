@@ -50,7 +50,7 @@ and testing of each story.
 - [X] T006 Create Angular Material custom theme file at `frontend/src/theme/custom-theme.scss` defining a light palette, dark palette, and typography config using `mat.define-theme()`
 - [X] T007 Update `frontend/src/styles.scss` to import Bootstrap (`@import 'bootstrap/scss/bootstrap'` or link via `angular.json`) and include the Angular Material theme from `theme/custom-theme.scss`; ensure Bootstrap import comes before Material styles
 - [X] T008 [P] Create `frontend/src/app/app.component.ts` as a standalone root shell component containing only `<app-nav></app-nav>` and `<router-outlet></router-outlet>` in its template
-- [X] T009 Define Angular client-side routes in `frontend/src/app/app.routes.ts`: path `''` → `HomeComponent`, path `'about'` → `AboutComponent`, wildcard `'**'` → redirect to `''`
+- [X] T009 Define Angular client-side routes in `frontend/src/app/app.routes.ts`: path `''` → `HomeComponent`,  wildcard `'**'` → redirect to `''`
 - [X] T010 Configure Angular providers in `frontend/src/app/app.config.ts` with `provideRouter(appRoutes)`, `provideAnimations()`, and register `ThemeService`
 - [X] T011 Create SQLite database connection singleton in `backend/src/db/database.ts` using `better-sqlite3`; open (or create) `backend/data/site.db`; export the `Database` instance
 - [X] T012 [P] Create initial SQL migration file at `backend/migrations/001_initial.sql` with DDL to create `schema_migrations` table and insert version row `1`
@@ -76,7 +76,7 @@ returns to `/`, "Home" link is highlighted. Navigate to `/xyz` — redirected to
 - [X] T016 [P] [US1] Create `frontend/src/app/pages/about/about.component.ts` as a standalone Angular component with a placeholder `<h1>About</h1>` heading and Bootstrap container class
 - [X] T017 [US1] Create `frontend/src/app/components/nav/nav.component.ts` as a standalone component using Angular Material `MatToolbarModule` and `MatButtonModule`; define `navItems` array matching the `NavigationItem` contract from `contracts/theme-api.md` with entries for Home (`/`) and About (`/about`)
 - [X] T018 [US1] Add navigation links to NavComponent template in `frontend/src/app/components/nav/nav.component.html` using `*ngFor` over `navItems`, Angular `routerLink`, and `routerLinkActive="active-link"` directive; apply Bootstrap `d-flex` and `gap-2` classes for layout
-- [X] T019 [US1] Import and declare `NavComponent` in `AppComponent` (`frontend/src/app/app.component.ts`) so it renders above `<router-outlet>`; update `app.routes.ts` to lazy-load `HomeComponent` and `AboutComponent`
+- [X] T019 [US1] Import and declare `NavComponent` in `AppComponent` (`frontend/src/app/app.component.ts`) so it renders above `<router-outlet>`; update `app.routes.ts` to lazy-load `HomeComponent` 
 
 **Checkpoint**: `ng serve` — navigation menu with two links visible; clicking each link loads the correct component; unknown route redirects to Home; active link has a distinct style.
 

@@ -59,7 +59,7 @@ is needed for page content at this stage.
 | Page | Route | Component | Content |
 |------|-------|-----------|---------|
 | Home | `/` | `HomeComponent` | Intentionally blank main area |
-| About | `/about` | `AboutComponent` | Placeholder heading only |
+
 
 ---
 

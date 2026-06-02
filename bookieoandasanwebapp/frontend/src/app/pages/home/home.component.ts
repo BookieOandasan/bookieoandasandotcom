@@ -25,7 +25,7 @@ interface Education {
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  name = 'Nemesio {Bookie} Oandasan';
+  name = 'Bookie Oandasan';
   location = 'Indian Wells, CA';
   phone = '562-773-9072';
   email = 'bookieoandasan@gmail.com';

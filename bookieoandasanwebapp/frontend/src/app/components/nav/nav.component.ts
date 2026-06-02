@@ -14,7 +14,7 @@ interface NavigationItem {
 
 const NAV_ITEMS: NavigationItem[] = [
   { label: 'Home', route: '/' },
-  { label: 'About', route: '/about' },
+
 ];
 
 @Component({
