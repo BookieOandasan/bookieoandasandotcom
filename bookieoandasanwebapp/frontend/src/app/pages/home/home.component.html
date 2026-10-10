@@ -4,10 +4,10 @@
   <mat-card class="mb-4 header-card">
     <mat-card-content>
       <div class="row align-items-center">
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md">
           <h1 class="resume-name mb-1">{{ name }}</h1>
         </div>
-        <div class="col-12 col-md-4 contact-block mt-2 mt-md-0">
+        <div class="col-12 col-md-auto contact-block mt-2 mt-md-0">
           <div class="contact-item">
             <mat-icon>location_on</mat-icon>
             <span>{{ location }}</span>
@@ -20,6 +20,12 @@
             <mat-icon>email</mat-icon>
             <a [href]="'mailto:' + email">{{ email }}</a>
           </div>
+        </div>
+        <div class="col-12 col-md-auto qr-block mt-3 mt-md-0">
+          <a [href]="siteUrl">
+            <img class="qr-code" src="qr-code.svg" width="96" height="96"
+                 [alt]="'QR code linking to ' + siteUrl" />
+          </a>
         </div>
       </div>
     </mat-card-content>

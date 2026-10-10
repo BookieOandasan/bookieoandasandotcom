@@ -29,6 +29,7 @@ export class HomeComponent {
   location = 'Indian Wells, CA';
   phone = '562-773-9072';
   email = 'bookieoandasan@gmail.com';
+  siteUrl = 'https://bookieoandasan.com';
 
   profile = `Strategic Business Systems Development Manager with 25+ years of .NET experience
     designing and scaling homegrown enterprise applications for healthcare. Proven leader who drives
